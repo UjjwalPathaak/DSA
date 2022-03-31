@@ -78,19 +78,16 @@ Node *takeinput()
     return head;
 }
 
-void printithnode(Node *head, int i)
+void printithnode(Node *head, int pos)
 {
     int index = 0;
     Node *temp = head;
-    while (temp != NULL && index < i)
+    while(index < pos - 1)
     {
-        index++;
         temp = temp->next;
+        index++;
     }
-    if (temp != NULL)
-    {
-        cout << temp->data;
-    }
+     cout << temp->data;
 }
 
 int main()
@@ -98,6 +95,6 @@ int main()
     Node *head = takeinput();
     int pos;
     cin >> pos;
-    printithnode(head, pos);
+   printithnode(head, pos);
     return 0;
 }

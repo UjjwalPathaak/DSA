@@ -5,7 +5,7 @@ For a given singly linked list of integers, find and return its length. Do it us
 Input format :
 The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
 
-First and the only line of each test case or query contains elements of the singly linked list separated by a single space. 
+First and the only line of each test case or query contains elements of the singly linked list separated by a single space.
  Remember/Consider :
 While specifying the list elements for input, -1 indicates the end of the singly linked list and hence, would never be a list element.
 Output format :
@@ -30,65 +30,58 @@ Sample Output 2 :
 0
 */
 
-#include <iostream>
+#include <bits/stdc++.h>11
 using namespace std;
-
-//class initialization
-class Node
+class node
 {
 public:
     int data;
-    Node *next;
-    Node(int data)
+    node *next;
+    node(int data)
     {
         this->data = data;
         this->next = NULL;
     }
 };
-
-
-Node *takeinput()
+node *takeinput()
 {
     int data;
     cin >> data;
-    Node *head = NULL;
+    node *head = NULL;
     while (data != -1)
     {
-        Node *newNode = new Node(data);
+        node *newnode = new node(data);
         if (head == NULL)
         {
-            head = newNode;
+            head = newnode;
         }
         else
         {
-            Node *temp = head;
+            node *temp = head;
             while (temp->next != NULL)
             {
                 temp = temp->next;
             }
-            temp->next = newNode;
+            temp->next = newnode;
         }
         cin >> data;
     }
     return head;
-};
-
-int length(Node *head)
+}
+int length(node *head)
 {
     int length = 0;
-    Node *temp = head;
+    node *temp = head;
     while (temp != NULL)
     {
         length++;
         temp = temp->next;
     }
-
     return length;
 }
-
 int main()
 {
-    Node *head = takeinput();
+    node *head = takeinput();
     cout << length(head) << endl;
     return 0;
 }
