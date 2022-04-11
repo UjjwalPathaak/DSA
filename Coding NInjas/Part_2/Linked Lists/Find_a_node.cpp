@@ -50,6 +50,7 @@ Sample Output 2 :
 In test case 1, we can see that 'N' = 2 is not present in the given linked list.
 
 In test case 2, 'N' = 6 appears at position 4 (0-based indexing) in the given linked list. */
+
 #include <bits/stdc++.h>
 using namespace std;
 class Node
@@ -105,3 +106,4 @@ int main()
     findnode(head, find);
     return 0;
 }
+
