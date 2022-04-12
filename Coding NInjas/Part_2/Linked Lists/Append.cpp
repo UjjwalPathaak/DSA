@@ -38,87 +38,94 @@ Sample Output 2 :
  Explanation to Sample Input 2 :
 We have been required to move the last 4 nodes to the front of the list. Here, "90->61->67->100" is the list which represents the last 4 nodes. When we move this list to the front then the remaining part of the initial list which is, "10->6->77" is attached after 100. Hence, the new list formed with an updated head pointing to 90. */
 
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-class Node
+
+class node
 {
 public:
     int data;
-    Node *next;
-    Node(int data)
+    node *next;
+
+    node(int data)
     {
         this->data = data;
-        this->next = NULL;
+        next = NULL;
     }
 };
 
-Node *takeinput()
+node *takeinput()
 {
+    node *head = NULL, *tail = NULL;
     int data;
     cin >> data;
-    Node *head = NULL;
+
     while (data != -1)
     {
-        Node *newNode = new Node(data);
+        node *newnode = new node(data);
         if (head == NULL)
         {
-            head = newNode;
+            tail = newnode;
+            head = newnode;
         }
         else
         {
-            Node *temp = head;
-            while (temp->next != NULL)
-            {
-                temp = temp->next;
-            }
-            temp->next = newNode;
+            tail->next = newnode;
+            tail = newnode;
         }
+
         cin >> data;
     }
     return head;
-};
-
-void append(Node *head, int pos)
-{
-    int *last = 0;
-    Node *temp = head;
-    while (last != NULL)
-    {
-        last = temp->next;
-        temp = temp->next;
-    }
 }
 
-void print(Node *head)
+node *append(node *head, int pos)
 {
+    node *temp = head;
+    node *currentnode = head;
+    node *last = head;
+    while (last->next != NULL)
+    {
+        last = last->next;
+    }
 
-    Node *temp = head;
-    while (temp != 0)
+    int current = 1;
+    while (current < pos)
+    {
+        currentnode = temp;
+        last->next = temp;
+        temp = temp->next;
+        currentnode->next = NULL;
+        last = last->next;
+        current++;
+    }
+
+    head = temp;
+    return head;
+}
+
+void print(node *head)
+{
+    node *temp = head;
+
+    while (temp != NULL)
     {
         cout << temp->data << " ";
         temp = temp->next;
     }
-    cout << endl;
 }
-int length(Node *head)
-{
-    int length = 0;
-    node *temp = head;
-    while (temp != NULL)
-    {
-        length++;
-        temp = temp->next;
-    }
-    return length;
-}
+
 int main()
 {
-    Node *head = takeinput();
-    int len = length(head);
-    int n;
-    cin >> n;
-    int pos = len - n;
-    append(head, pos, len);
+    node *head = takeinput();
+
+    int pos;
+    cin >> pos;
+    head = append(head, pos);
     print(head);
     return 0;
 }
+
+
+
+

@@ -14,19 +14,28 @@ public:
     }
 };
 
-void findLL(node *head, int find)
+node *deleteduplicates(node *head)
 {
     node *temp = head;
-    int output = 1;
+    node *nextnode = head->next;
 
-    while (temp->data != find)
+    while (temp->next != NULL)
     {
-        output++;
-        temp = temp->next;
+        if (temp->data == nextnode->data)
+        {
+            temp->next = nextnode->next;
+            nextnode = temp->next;
+        }
+        else
+        {
+            temp = temp->next;
+            nextnode = nextnode->next;
+        }
     }
 
-    cout << output;
+    return head;
 }
+
 node *takeinput()
 {
     int data;
@@ -49,11 +58,22 @@ node *takeinput()
     }
     return head;
 }
+
+void print(node *head)
+{
+    node *temp = head;
+
+    while (temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
 int main()
 {
     node *head = takeinput();
-    int find;
-    cin >> find;
-    findLL(head, find);
+    head = deleteduplicates(head);
+    print(head);
     return 0;
 }

@@ -14,19 +14,25 @@ public:
     }
 };
 
-void findLL(node *head, int find)
+node *reverse(node *head)
 {
-    node *temp = head;
-    int output = 1;
+    node *current = head;
+    node *prev = NULL;
+    node *nxt =  NULL;
 
-    while (temp->data != find)
+    while (current != NULL)
     {
-        output++;
-        temp = temp->next;
-    }
+        nxt = current->next;
+        current->next = prev;
 
-    cout << output;
+        prev = current;
+        current = nxt;
+    }
+    
+
+    return prev;
 }
+
 node *takeinput()
 {
     int data;
@@ -49,11 +55,22 @@ node *takeinput()
     }
     return head;
 }
+
+void print(node *head)
+{
+    node *temp = head;
+
+    while (temp != NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
 int main()
 {
     node *head = takeinput();
-    int find;
-    cin >> find;
-    findLL(head, find);
+    head = reverse(head);
+    print(head);
     return 0;
 }
