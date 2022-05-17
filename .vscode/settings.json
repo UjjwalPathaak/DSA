@@ -73,6 +73,7 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "q2": "c"
+        "q2": "c",
+        "stacks": "c"
     }
 }
