@@ -19,13 +19,13 @@ Sample Output 2 :
 using namespace std;
 int sum(int num)
 {
-    //base case
-    if (num <= 0)
+    if (num < 10)
     {
-        return 0;
+        return num;
     }
-    int lastdigit = num % 10;
-    return lastdigit + sum(num / 10);
+
+    int tempsum = num%10 + sum(num/10);
+    return tempsum;
 }
 int main()
 {
