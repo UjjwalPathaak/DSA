@@ -1,39 +1,32 @@
-#include <bits/stdc++.h>
+/* Check if the array is sorted or not using recursion */
+/* 
+Using Recursion find the nth term
+of the finbinacci series:-
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55...
+*/
+
+#include<bits/stdc++.h>
 using namespace std;
-bool is_sorted(int arr[], int size)
-{
-    if (size == 1)
-    {
-        return true;
-    }
 
-    if (arr[0] > arr[1])
+int is_sorted(int *arr, int size)
+{ 
+    if(size == 0)
     {
-        return false;
+        return 0;
     }
-
+    if(arr[size] < arr[size - 1])
+    {
+        return -1;
+    }
     is_sorted(arr, size - 1);
-
-    return true;
 }
+
 int main()
 {
-    int size;
-    cin >> size;
-
-    int arr[size];
-    for (int i = 0; i < size; i++)
-    {
-        cin >> arr[i];
-    }
-
-    if (is_sorted(arr, size))
-    {
-        cout << "Is Sorted";
-    }
-    else
-    {
-        cout << "Not Sorted";
-    }
-    return 0;
+    int arr[] = {1, 8, 5, 6, 8, 2, 5, 1};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    int ans = is_sorted(arr, size - 1);
+    cout << ans;
+   
+return 0;
 }
