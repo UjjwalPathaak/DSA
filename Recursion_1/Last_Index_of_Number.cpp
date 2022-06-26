@@ -41,7 +41,7 @@ int find(int* arr, int size, int target, int index)
 }
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 9, 9, 10};
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 9, 9, 10}; 
     int size = sizeof(arr)/sizeof(arr[0]);
     cout << find(arr, size - 1, 9, size - 1);
  return 0;
