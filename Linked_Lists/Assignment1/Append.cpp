@@ -79,30 +79,28 @@ node *takeinput()
     return head;
 }
 
-node *append(node *head, int pos)
+/* node *append(node *head, int pos)
 {
-    node *temp = head;
-    node *currentnode = head;
-    node *last = head;
-    while (last->next != NULL)
+    node *current = head;
+    node *prev = head;
+    node *fur = current->next;
+    int index = 0;
+    while (prev != NULL)
     {
-        last = last->next;
+        prev = prev -> next;
     }
 
-    int current = 1;
-    while (current < pos)
+    while (index <= pos - 1)
     {
-        currentnode = temp;
-        last->next = temp;
-        temp = temp->next;
-        currentnode->next = NULL;
-        last = last->next;
-        current++;
+        index--;
+        fur = fur -> next;
     }
 
-    head = temp;
-    return head;
-}
+    prev -> next = current;
+    node *returnn = fur -> next;
+    fur -> next = NULL;
+    return returnn;
+} */
 
 void print(node *head)
 {
@@ -126,6 +124,26 @@ int main()
     return 0;
 }
 
+/* 
+node *temp = head;
+    node *currentnode = head;
+    node *last = head;
+    while (last->next != NULL)
+    {
+        last = last->next;
+    }
 
+    int current = 1;
+    while (current < pos)
+    {
+        currentnode = temp;
+        last->next = temp;
+        temp = temp->next;
+        currentnode->next = NULL;
+        last = last->next;
+        current++;
+    }
 
-
+    head = temp;
+    return head;
+     */

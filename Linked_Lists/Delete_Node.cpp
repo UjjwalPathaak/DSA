@@ -1,32 +1,22 @@
 #include <iostream>
 using namespace std;
-class Node
-{
-public:
-    int data;
-    Node *next;
-    Node(int data)
-    {
-        this->data = data;
-        this->next = NULL;
-    }
-};
+#include "node.cpp"
 
-Node *takeinput()
+node *takeinput()
 {
     int data;
     cin >> data;
-    Node *head = NULL;
+    node *head = NULL;
     while (data != -1)
     {
-        Node *newNode = new Node(data);
+        node *newNode = new node(data);
         if (head == NULL)
         {
             head = newNode;
         }
         else
         {
-            Node *temp = head;
+            node *temp = head;
             while (temp->next != NULL)
             {
                 temp = temp->next;
@@ -38,32 +28,30 @@ Node *takeinput()
     return head;
 };
 
-Node *deletenode(Node *head, int pos)
+node *deletenode(node *head, int pos)
 {
-    int current = 0;
-    Node *previous = NULL;
-    Node *temp = head;
-    if (pos == 1)
+    node *temp = head;
+    node *tail = NULL;
+
+    int index = 0;
+
+    while (index < pos - 1)
     {
-        temp = temp->next;
-        head = temp;
-        return head;
+        tail = temp;
+        temp = temp -> next;
+        index++;
     }
-    while (current < pos - 1)
-    {
-        previous = temp;
-        temp = temp->next;
-        current++;
-    }
-    temp = temp->next;
-    previous->next = temp;
+    
+    temp = temp -> next;
+
+    tail -> next = temp;
+
     return head;
 }
 
-void print(Node *head)
+void print(node *head)
 {
-
-    Node *temp = head;
+    node *temp = head;
     while (temp != 0)
     {
         cout << temp->data << " ";
@@ -74,7 +62,7 @@ void print(Node *head)
 
 int main()
 {
-    Node *head = takeinput();
+    node *head = takeinput();
     cout << "Linked List before deletion" << endl;
     print(head);
     int pos;

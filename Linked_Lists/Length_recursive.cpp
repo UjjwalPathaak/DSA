@@ -57,23 +57,20 @@ node *takeinput(){
     }
     return head;
 }
-int length(node *head)
+int length_recursive(node *temp)
 {
-    node *temp = head;
-    int counter = 0;
-    
-    while (temp != NULL)
+    if (temp == NULL)
     {
-        temp = temp -> next;
-        counter++;
+        return 0;
     }
 
-    return counter;
+    return 1 + length_recursive(temp -> next);
     
 }
 int main()
 {
     node *head = takeinput();
-    cout << length(head) << endl;
+    node *temp = head;
+    cout << length_recursive(temp) << endl;
     return 0;
 }
