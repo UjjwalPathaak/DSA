@@ -74,7 +74,11 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "q2": "c",
-        "stacks": "c"
+        "stacks": "c",
+        "ranges": "cpp",
+        "span": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
